@@ -7,12 +7,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "lint": "oxlint",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "contract:emit": "prisma contract emit"
   },
   "keywords": [],
   "type": "module",
   "dependencies": {
+    "@prisma/orm-postgres": "^8.0.0-rc.24",
     "argon2": "^0.45.2",
+    "dotenv": "^18.0.10",
     "express": "^5.3.0",
     "jsonwebtoken": "^9.0.3",
     "mysql2": "^3.24.6",
@@ -25,13 +28,14 @@
   ],
   "typings": "./lib/index.d.ts",
   "devDependencies": {
-    "@types/argon2": "^0.14.1",
+    "@prisma/cli-engine": "^0.10.0",
     "@types/express": "^5.0.6",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^26.6.6",
     "oxfmt": "^0.79.0",
     "oxlint": "^1.94.0",
-    "oxlint-tsgolint": "^7.0.2007"
+    "oxlint-tsgolint": "^7.0.2007",
+    "prisma": "^8.0.0-rc.34"
   },
   "allowScripts": {
     "argon2@0.45.2": true

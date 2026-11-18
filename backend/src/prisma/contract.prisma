@@ -1,0 +1,41 @@
+// use prisma-8
+
+model User {
+  id Int @id @default(autoincrement())
+  username String @unique
+  email String @unique
+  password String
+  profilePicture String
+  projects Project[]
+}
+
+model Project {
+  id Int @id @default(autoincrement())
+  name String
+  defaultPermissions Int
+  ownerId Int
+  owner User @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+}
+
+model Role {
+  id Int @id @default(autoincrement())
+  name String
+  permissions Int
+  projectId Int
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+}
+
+model Column {
+  id Int @id @default(autoincrement())
+  name String
+  position Int
+  projectId Int
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+}
+
+model Label {
+  id Int @id @default(autoincrement())
+  name String
+  projectId Int
+  project Proj
+}
