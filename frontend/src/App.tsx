@@ -1,5 +1,5 @@
 function App() {
-  return <h1 className="text-3xl text-center">Ok! Lato asda</h1>;
+  return <h1 className="text-center text-3xl">Ok! Lato asda</h1>;
 }
 
 export default App;
