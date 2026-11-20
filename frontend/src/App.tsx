@@ -1,5 +1,7 @@
+import Home from "./components/pages/Home.tsx";
+
 function App() {
-  return <h1 className="text-center text-3xl">Ok! Lato asda</h1>;
+  return <Home />;
 }
 
 export default App;
