@@ -62,7 +62,7 @@
               "id": {
                 "nullable": false,
                 "type": {
-                  "codecId": "pg/int4@1",
+                  "codecId": "pg/int8@1",
                   "kind": "scalar"
                 }
               },
@@ -83,7 +83,7 @@
               "projectId": {
                 "nullable": false,
                 "type": {
-                  "codecId": "pg/int4@1",
+                  "codecId": "pg/int8@1",
                   "kind": "scalar"
                 }
               }
@@ -152,21 +152,21 @@
               "creatorId": {
                 "nullable": true,
                 "type": {
-                  "codecId": "pg/int4@1",
+                  "codecId": "pg/int8@1",
                   "kind": "scalar"
                 }
               },
               "id": {
                 "nullable": false,
                 "type": {
-                  "codecId": "pg/int4@1",
+                  "codecId": "pg/int8@1",
                   "kind": "scalar"
                 }
               },
               "taskId": {
                 "nullable": false,
                 "type": {
-                  "codecId": "pg/int4@1",
+                  "codecId": "pg/int8@1",
                   "kind": "scalar"
                 }
               }
@@ -253,7 +253,7 @@
               "projectId": {
                 "nullable": false,
                 "type": {
-                  "codecId": "pg/int4@1",
+                  "codecId": "pg/int8@1",
                   "kind": "scalar"
                 }
               }
@@ -300,7 +300,7 @@
               "id": {
                 "nullable": false,
                 "type": {
-                  "codecId": "pg/int4@1",
+                  "codecId": "pg/int8@1",
                   "kind": "scalar"
                 }
               },
@@ -314,7 +314,7 @@
               "projectId": {
                 "nullable": false,
                 "type": {
-                  "codecId": "pg/int4@1",
+                  "codecId": "pg/int8@1",
                   "kind": "scalar"
                 }
               }
@@ -373,14 +373,14 @@
               "labelId": {
                 "nullable": false,
                 "type": {
-                  "codecId": "pg/int4@1",
+                  "codecId": "pg/int8@1",
                   "kind": "scalar"
                 }
               },
               "taskId": {
                 "nullable": false,
                 "type": {
-                  "codecId": "pg/int4@1",
+                  "codecId": "pg/int8@1",
                   "kind": "scalar"
                 }
               }
@@ -454,7 +454,7 @@
               "userId": {
                 "nullable": false,
                 "type": {
-                  "codecId": "pg/int4@1",
+                  "codecId": "pg/int8@1",
                   "kind": "scalar"
                 }
               }
@@ -519,7 +519,7 @@
               "ownerId": {
                 "nullable": false,
                 "type": {
-                  "codecId": "pg/int4@1",
+                  "codecId": "pg/int8@1",
                   "kind": "scalar"
                 }
               }
@@ -641,21 +641,21 @@
               "projectId": {
                 "nullable": false,
                 "type": {
-                  "codecId": "pg/int4@1",
+                  "codecId": "pg/int8@1",
                   "kind": "scalar"
                 }
               },
               "roleId": {
                 "nullable": true,
                 "type": {
-                  "codecId": "pg/int4@1",
+                  "codecId": "pg/int8@1",
                   "kind": "scalar"
                 }
               },
               "userId": {
                 "nullable": false,
                 "type": {
-                  "codecId": "pg/int4@1",
+                  "codecId": "pg/int8@1",
                   "kind": "scalar"
                 }
               }
@@ -752,7 +752,7 @@
               "projectId": {
                 "nullable": false,
                 "type": {
-                  "codecId": "pg/int4@1",
+                  "codecId": "pg/int8@1",
                   "kind": "scalar"
                 }
               }
@@ -814,14 +814,14 @@
               "columnId": {
                 "nullable": false,
                 "type": {
-                  "codecId": "pg/int4@1",
+                  "codecId": "pg/int8@1",
                   "kind": "scalar"
                 }
               },
               "creatorId": {
                 "nullable": true,
                 "type": {
-                  "codecId": "pg/int4@1",
+                  "codecId": "pg/int8@1",
                   "kind": "scalar"
                 }
               },
@@ -835,7 +835,7 @@
               "id": {
                 "nullable": false,
                 "type": {
-                  "codecId": "pg/int4@1",
+                  "codecId": "pg/int8@1",
                   "kind": "scalar"
                 }
               },
@@ -953,14 +953,14 @@
               "taskId": {
                 "nullable": false,
                 "type": {
-                  "codecId": "pg/int4@1",
+                  "codecId": "pg/int8@1",
                   "kind": "scalar"
                 }
               },
               "userId": {
                 "nullable": false,
                 "type": {
-                  "codecId": "pg/int4@1",
+                  "codecId": "pg/int8@1",
                   "kind": "scalar"
                 }
               }
@@ -1174,10 +1174,17 @@
         "entries": {
           "table": {
             "Column": {
+              "checks": [
+                {
+                  "expression": "position >= 0",
+                  "name": "position_check_c03c2ccb",
+                  "prefix": "position_check"
+                }
+              ],
               "columns": {
                 "id": {
-                  "codecId": "pg/int4@1",
-                  "dataType": "pg/int4",
+                  "codecId": "pg/int8@1",
+                  "dataType": "pg/int8",
                   "default": {
                     "expression": "autoincrement()",
                     "kind": "function"
@@ -1195,8 +1202,8 @@
                   "nullable": false
                 },
                 "project_id": {
-                  "codecId": "pg/int4@1",
-                  "dataType": "pg/int4",
+                  "codecId": "pg/int8@1",
+                  "dataType": "pg/int8",
                   "nullable": false
                 }
               },
@@ -1247,13 +1254,13 @@
                   "nullable": false
                 },
                 "creator_id": {
-                  "codecId": "pg/int4@1",
-                  "dataType": "pg/int4",
+                  "codecId": "pg/int8@1",
+                  "dataType": "pg/int8",
                   "nullable": true
                 },
                 "id": {
-                  "codecId": "pg/int4@1",
-                  "dataType": "pg/int4",
+                  "codecId": "pg/int8@1",
+                  "dataType": "pg/int8",
                   "default": {
                     "expression": "autoincrement()",
                     "kind": "function"
@@ -1261,8 +1268,8 @@
                   "nullable": false
                 },
                 "task_id": {
-                  "codecId": "pg/int4@1",
-                  "dataType": "pg/int4",
+                  "codecId": "pg/int8@1",
+                  "dataType": "pg/int8",
                   "nullable": false
                 }
               },
@@ -1357,8 +1364,8 @@
                   "nullable": false
                 },
                 "projectId": {
-                  "codecId": "pg/int4@1",
-                  "dataType": "pg/int4",
+                  "codecId": "pg/int8@1",
+                  "dataType": "pg/int8",
                   "nullable": false
                 }
               },
@@ -1404,8 +1411,8 @@
             "Label": {
               "columns": {
                 "id": {
-                  "codecId": "pg/int4@1",
-                  "dataType": "pg/int4",
+                  "codecId": "pg/int8@1",
+                  "dataType": "pg/int8",
                   "default": {
                     "expression": "autoincrement()",
                     "kind": "function"
@@ -1418,8 +1425,8 @@
                   "nullable": false
                 },
                 "project_id": {
-                  "codecId": "pg/int4@1",
-                  "dataType": "pg/int4",
+                  "codecId": "pg/int8@1",
+                  "dataType": "pg/int8",
                   "nullable": false
                 }
               },
@@ -1465,13 +1472,13 @@
             "Labeling": {
               "columns": {
                 "label_id": {
-                  "codecId": "pg/int4@1",
-                  "dataType": "pg/int4",
+                  "codecId": "pg/int8@1",
+                  "dataType": "pg/int8",
                   "nullable": false
                 },
                 "task_id": {
-                  "codecId": "pg/int4@1",
-                  "dataType": "pg/int4",
+                  "codecId": "pg/int8@1",
+                  "dataType": "pg/int8",
                   "nullable": false
                 }
               },
@@ -1553,18 +1560,14 @@
                 "created_at": {
                   "codecId": "pg/timestamptz-date@1",
                   "dataType": "pg/timestamptz",
-                  "default": {
-                    "expression": "now()",
-                    "kind": "function"
-                  },
                   "nullable": false,
                   "typeParams": {
                     "precision": 3
                   }
                 },
                 "userId": {
-                  "codecId": "pg/int4@1",
-                  "dataType": "pg/int4",
+                  "codecId": "pg/int8@1",
+                  "dataType": "pg/int8",
                   "nullable": false
                 }
               },
@@ -1629,8 +1632,8 @@
                   "nullable": false
                 },
                 "owner_id": {
-                  "codecId": "pg/int4@1",
-                  "dataType": "pg/int4",
+                  "codecId": "pg/int8@1",
+                  "dataType": "pg/int8",
                   "nullable": false
                 }
               },
@@ -1676,18 +1679,18 @@
             "ProjectMembership": {
               "columns": {
                 "project_id": {
-                  "codecId": "pg/int4@1",
-                  "dataType": "pg/int4",
+                  "codecId": "pg/int8@1",
+                  "dataType": "pg/int8",
                   "nullable": false
                 },
                 "role_id": {
-                  "codecId": "pg/int4@1",
-                  "dataType": "pg/int4",
+                  "codecId": "pg/int8@1",
+                  "dataType": "pg/int8",
                   "nullable": true
                 },
                 "user_id": {
-                  "codecId": "pg/int4@1",
-                  "dataType": "pg/int4",
+                  "codecId": "pg/int8@1",
+                  "dataType": "pg/int8",
                   "nullable": false
                 }
               },
@@ -1809,8 +1812,8 @@
                   "nullable": false
                 },
                 "project_id": {
-                  "codecId": "pg/int4@1",
-                  "dataType": "pg/int4",
+                  "codecId": "pg/int8@1",
+                  "dataType": "pg/int8",
                   "nullable": false
                 }
               },
@@ -1856,13 +1859,13 @@
             "Task": {
               "columns": {
                 "column_id": {
-                  "codecId": "pg/int4@1",
-                  "dataType": "pg/int4",
+                  "codecId": "pg/int8@1",
+                  "dataType": "pg/int8",
                   "nullable": false
                 },
                 "creator_id": {
-                  "codecId": "pg/int4@1",
-                  "dataType": "pg/int4",
+                  "codecId": "pg/int8@1",
+                  "dataType": "pg/int8",
                   "nullable": true
                 },
                 "description": {
@@ -1871,8 +1874,8 @@
                   "nullable": true
                 },
                 "id": {
-                  "codecId": "pg/int4@1",
-                  "dataType": "pg/int4",
+                  "codecId": "pg/int8@1",
+                  "dataType": "pg/int8",
                   "default": {
                     "expression": "autoincrement()",
                     "kind": "function"
@@ -1945,13 +1948,13 @@
             "TaskAssignment": {
               "columns": {
                 "task_id": {
-                  "codecId": "pg/int4@1",
-                  "dataType": "pg/int4",
+                  "codecId": "pg/int8@1",
+                  "dataType": "pg/int8",
                   "nullable": false
                 },
                 "user_id": {
-                  "codecId": "pg/int4@1",
-                  "dataType": "pg/int4",
+                  "codecId": "pg/int8@1",
+                  "dataType": "pg/int8",
                   "nullable": false
                 }
               },
@@ -2080,10 +2083,10 @@
         "kind": "postgres-schema"
       }
     },
-    "storageHash": "2b2376b808266d5271aa0db717d17d6b8abc9392ac0421a94f362cd57eca4567"
+    "storageHash": "84af9889792ba8ad8ae2ffeb282846bc037062eb60e7cfa25ad7d30aca146152"
   },
   "execution": {
-    "executionHash": "bf561e5d80cf57d339abf9f1c38be7b16bbb1f1fa73d61a3192780d4d27795a3",
+    "executionHash": "2999cfc3be299ddf331f85dc892f7d7fbfe402d199740c91d6c8eb3b66b87396",
     "mutations": {
       "defaults": [
         {
@@ -2105,6 +2108,20 @@
           "ref": {
             "entry": "PasswordResetLink",
             "field": "code",
+            "namespace": "public"
+          }
+        },
+        {
+          "onCreate": {
+            "id": "timestampNow",
+            "kind": "generator",
+            "params": {
+              "precision": 3
+            }
+          },
+          "ref": {
+            "entry": "PasswordResetLink",
+            "field": "created_at",
             "namespace": "public"
           }
         }

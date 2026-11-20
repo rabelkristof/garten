@@ -23,9 +23,9 @@ import type {
 } from '@prisma/orm-postgres/contract/types';
 
 export type StorageHash =
-  StorageHashBase<'2b2376b808266d5271aa0db717d17d6b8abc9392ac0421a94f362cd57eca4567'>;
+  StorageHashBase<'84af9889792ba8ad8ae2ffeb282846bc037062eb60e7cfa25ad7d30aca146152'>;
 export type ExecutionHash =
-  ExecutionHashBase<'bf561e5d80cf57d339abf9f1c38be7b16bbb1f1fa73d61a3192780d4d27795a3'>;
+  ExecutionHashBase<'2999cfc3be299ddf331f85dc892f7d7fbfe402d199740c91d6c8eb3b66b87396'>;
 export type ProfileHash =
   ProfileHashBase<'3916f444a8a17ad749191acf9e08dad97d1a327b88c2f1d45d12f240296aa8b2'>;
 
@@ -469,8 +469,8 @@ type ContractBase = Omit<
             readonly Column: {
               columns: {
                 readonly id: {
-                  readonly dataType: 'pg/int4';
-                  readonly codecId: 'pg/int4@1';
+                  readonly dataType: 'pg/int8';
+                  readonly codecId: 'pg/int8@1';
                   readonly nullable: false;
                   readonly default: {
                     readonly kind: 'function';
@@ -491,8 +491,8 @@ type ContractBase = Omit<
                   readonly many: false;
                 };
                 readonly project_id: {
-                  readonly dataType: 'pg/int4';
-                  readonly codecId: 'pg/int4@1';
+                  readonly dataType: 'pg/int8';
+                  readonly codecId: 'pg/int8@1';
                   readonly nullable: false;
                   readonly many: false;
                 };
@@ -531,14 +531,14 @@ type ContractBase = Omit<
                   readonly many: false;
                 };
                 readonly creator_id: {
-                  readonly dataType: 'pg/int4';
-                  readonly codecId: 'pg/int4@1';
+                  readonly dataType: 'pg/int8';
+                  readonly codecId: 'pg/int8@1';
                   readonly nullable: true;
                   readonly many: false;
                 };
                 readonly id: {
-                  readonly dataType: 'pg/int4';
-                  readonly codecId: 'pg/int4@1';
+                  readonly dataType: 'pg/int8';
+                  readonly codecId: 'pg/int8@1';
                   readonly nullable: false;
                   readonly default: {
                     readonly kind: 'function';
@@ -547,8 +547,8 @@ type ContractBase = Omit<
                   readonly many: false;
                 };
                 readonly task_id: {
-                  readonly dataType: 'pg/int4';
-                  readonly codecId: 'pg/int4@1';
+                  readonly dataType: 'pg/int8';
+                  readonly codecId: 'pg/int8@1';
                   readonly nullable: false;
                   readonly many: false;
                 };
@@ -619,8 +619,8 @@ type ContractBase = Omit<
                   readonly many: false;
                 };
                 readonly projectId: {
-                  readonly dataType: 'pg/int4';
-                  readonly codecId: 'pg/int4@1';
+                  readonly dataType: 'pg/int8';
+                  readonly codecId: 'pg/int8@1';
                   readonly nullable: false;
                   readonly many: false;
                 };
@@ -653,8 +653,8 @@ type ContractBase = Omit<
             readonly Label: {
               columns: {
                 readonly id: {
-                  readonly dataType: 'pg/int4';
-                  readonly codecId: 'pg/int4@1';
+                  readonly dataType: 'pg/int8';
+                  readonly codecId: 'pg/int8@1';
                   readonly nullable: false;
                   readonly default: {
                     readonly kind: 'function';
@@ -669,8 +669,8 @@ type ContractBase = Omit<
                   readonly many: false;
                 };
                 readonly project_id: {
-                  readonly dataType: 'pg/int4';
-                  readonly codecId: 'pg/int4@1';
+                  readonly dataType: 'pg/int8';
+                  readonly codecId: 'pg/int8@1';
                   readonly nullable: false;
                   readonly many: false;
                 };
@@ -703,14 +703,14 @@ type ContractBase = Omit<
             readonly Labeling: {
               columns: {
                 readonly label_id: {
-                  readonly dataType: 'pg/int4';
-                  readonly codecId: 'pg/int4@1';
+                  readonly dataType: 'pg/int8';
+                  readonly codecId: 'pg/int8@1';
                   readonly nullable: false;
                   readonly many: false;
                 };
                 readonly task_id: {
-                  readonly dataType: 'pg/int4';
-                  readonly codecId: 'pg/int4@1';
+                  readonly dataType: 'pg/int8';
+                  readonly codecId: 'pg/int8@1';
                   readonly nullable: false;
                   readonly many: false;
                 };
@@ -770,13 +770,12 @@ type ContractBase = Omit<
                   readonly dataType: 'pg/timestamptz';
                   readonly codecId: 'pg/timestamptz-date@1';
                   readonly nullable: false;
-                  readonly default: { readonly kind: 'function'; readonly expression: 'now()' };
                   readonly typeParams: { readonly precision: 3 };
                   readonly many: false;
                 };
                 readonly userId: {
-                  readonly dataType: 'pg/int4';
-                  readonly codecId: 'pg/int4@1';
+                  readonly dataType: 'pg/int8';
+                  readonly codecId: 'pg/int8@1';
                   readonly nullable: false;
                   readonly many: false;
                 };
@@ -831,8 +830,8 @@ type ContractBase = Omit<
                   readonly many: false;
                 };
                 readonly owner_id: {
-                  readonly dataType: 'pg/int4';
-                  readonly codecId: 'pg/int4@1';
+                  readonly dataType: 'pg/int8';
+                  readonly codecId: 'pg/int8@1';
                   readonly nullable: false;
                   readonly many: false;
                 };
@@ -865,20 +864,20 @@ type ContractBase = Omit<
             readonly ProjectMembership: {
               columns: {
                 readonly project_id: {
-                  readonly dataType: 'pg/int4';
-                  readonly codecId: 'pg/int4@1';
+                  readonly dataType: 'pg/int8';
+                  readonly codecId: 'pg/int8@1';
                   readonly nullable: false;
                   readonly many: false;
                 };
                 readonly role_id: {
-                  readonly dataType: 'pg/int4';
-                  readonly codecId: 'pg/int4@1';
+                  readonly dataType: 'pg/int8';
+                  readonly codecId: 'pg/int8@1';
                   readonly nullable: true;
                   readonly many: false;
                 };
                 readonly user_id: {
-                  readonly dataType: 'pg/int4';
-                  readonly codecId: 'pg/int4@1';
+                  readonly dataType: 'pg/int8';
+                  readonly codecId: 'pg/int8@1';
                   readonly nullable: false;
                   readonly many: false;
                 };
@@ -969,8 +968,8 @@ type ContractBase = Omit<
                   readonly many: false;
                 };
                 readonly project_id: {
-                  readonly dataType: 'pg/int4';
-                  readonly codecId: 'pg/int4@1';
+                  readonly dataType: 'pg/int8';
+                  readonly codecId: 'pg/int8@1';
                   readonly nullable: false;
                   readonly many: false;
                 };
@@ -1003,14 +1002,14 @@ type ContractBase = Omit<
             readonly Task: {
               columns: {
                 readonly column_id: {
-                  readonly dataType: 'pg/int4';
-                  readonly codecId: 'pg/int4@1';
+                  readonly dataType: 'pg/int8';
+                  readonly codecId: 'pg/int8@1';
                   readonly nullable: false;
                   readonly many: false;
                 };
                 readonly creator_id: {
-                  readonly dataType: 'pg/int4';
-                  readonly codecId: 'pg/int4@1';
+                  readonly dataType: 'pg/int8';
+                  readonly codecId: 'pg/int8@1';
                   readonly nullable: true;
                   readonly many: false;
                 };
@@ -1021,8 +1020,8 @@ type ContractBase = Omit<
                   readonly many: false;
                 };
                 readonly id: {
-                  readonly dataType: 'pg/int4';
-                  readonly codecId: 'pg/int4@1';
+                  readonly dataType: 'pg/int8';
+                  readonly codecId: 'pg/int8@1';
                   readonly nullable: false;
                   readonly default: {
                     readonly kind: 'function';
@@ -1077,14 +1076,14 @@ type ContractBase = Omit<
             readonly TaskAssignment: {
               columns: {
                 readonly task_id: {
-                  readonly dataType: 'pg/int4';
-                  readonly codecId: 'pg/int4@1';
+                  readonly dataType: 'pg/int8';
+                  readonly codecId: 'pg/int8@1';
                   readonly nullable: false;
                   readonly many: false;
                 };
                 readonly user_id: {
-                  readonly dataType: 'pg/int4';
-                  readonly codecId: 'pg/int4@1';
+                  readonly dataType: 'pg/int8';
+                  readonly codecId: 'pg/int8@1';
                   readonly nullable: false;
                   readonly many: false;
                 };
@@ -1221,7 +1220,7 @@ type ContractBase = Omit<
             readonly fields: {
               readonly id: {
                 readonly nullable: false;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int8@1' };
               };
               readonly name: {
                 readonly nullable: false;
@@ -1233,7 +1232,7 @@ type ContractBase = Omit<
               };
               readonly projectId: {
                 readonly nullable: false;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int8@1' };
               };
             };
             readonly relations: {
@@ -1277,15 +1276,15 @@ type ContractBase = Omit<
               };
               readonly creatorId: {
                 readonly nullable: true;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int8@1' };
               };
               readonly id: {
                 readonly nullable: false;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int8@1' };
               };
               readonly taskId: {
                 readonly nullable: false;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int8@1' };
               };
             };
             readonly relations: {
@@ -1339,7 +1338,7 @@ type ContractBase = Omit<
               };
               readonly projectId: {
                 readonly nullable: false;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int8@1' };
               };
             };
             readonly relations: {
@@ -1371,7 +1370,7 @@ type ContractBase = Omit<
             readonly fields: {
               readonly id: {
                 readonly nullable: false;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int8@1' };
               };
               readonly name: {
                 readonly nullable: false;
@@ -1379,7 +1378,7 @@ type ContractBase = Omit<
               };
               readonly projectId: {
                 readonly nullable: false;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int8@1' };
               };
             };
             readonly relations: {
@@ -1421,11 +1420,11 @@ type ContractBase = Omit<
             readonly fields: {
               readonly labelId: {
                 readonly nullable: false;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int8@1' };
               };
               readonly taskId: {
                 readonly nullable: false;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int8@1' };
               };
             };
             readonly relations: {
@@ -1476,7 +1475,7 @@ type ContractBase = Omit<
               };
               readonly userId: {
                 readonly nullable: false;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int8@1' };
               };
             };
             readonly relations: {
@@ -1516,7 +1515,7 @@ type ContractBase = Omit<
               };
               readonly ownerId: {
                 readonly nullable: false;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int8@1' };
               };
             };
             readonly relations: {
@@ -1597,15 +1596,15 @@ type ContractBase = Omit<
             readonly fields: {
               readonly projectId: {
                 readonly nullable: false;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int8@1' };
               };
               readonly roleId: {
                 readonly nullable: true;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int8@1' };
               };
               readonly userId: {
                 readonly nullable: false;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int8@1' };
               };
             };
             readonly relations: {
@@ -1666,7 +1665,7 @@ type ContractBase = Omit<
               };
               readonly projectId: {
                 readonly nullable: false;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int8@1' };
               };
             };
             readonly relations: {
@@ -1709,11 +1708,11 @@ type ContractBase = Omit<
             readonly fields: {
               readonly columnId: {
                 readonly nullable: false;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int8@1' };
               };
               readonly creatorId: {
                 readonly nullable: true;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int8@1' };
               };
               readonly description: {
                 readonly nullable: true;
@@ -1721,7 +1720,7 @@ type ContractBase = Omit<
               };
               readonly id: {
                 readonly nullable: false;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int8@1' };
               };
               readonly title: {
                 readonly nullable: false;
@@ -1800,11 +1799,11 @@ type ContractBase = Omit<
             readonly fields: {
               readonly taskId: {
                 readonly nullable: false;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int8@1' };
               };
               readonly userId: {
                 readonly nullable: false;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int8@1' };
               };
             };
             readonly relations: {
@@ -1986,6 +1985,18 @@ type ContractBase = Omit<
           readonly ref: {
             readonly entry: 'PasswordResetLink';
             readonly field: 'code';
+            readonly namespace: 'public';
+          };
+        },
+        {
+          readonly onCreate: {
+            readonly id: 'timestampNow';
+            readonly kind: 'generator';
+            readonly params: { readonly precision: 3 };
+          };
+          readonly ref: {
+            readonly entry: 'PasswordResetLink';
+            readonly field: 'created_at';
             readonly namespace: 'public';
           };
         },

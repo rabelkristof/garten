@@ -1,5 +1,4 @@
 // use prisma-8
-
 model User {
   id                 BigInt              @id @default(autoincrement())
   username           String              @unique
@@ -22,7 +21,7 @@ model Project {
   id                 BigInt              @id @default(autoincrement())
   name               String
   defaultPermissions Int                 @map("default_permissions")
-  ownerId            Int                 @map("owner_id")
+  ownerId            BigInt              @map("owner_id")
 
   owner              User                @relation(fields: [ownerId], references: [id], onDelete: Cascade)
 
@@ -31,108 +30,122 @@ model Project {
   labels             Label[]
   inviteLinks        InviteLink[]
   projectMemberships ProjectMembership[]
+
+  @@index([ownerId])
 }
 
 model Role {
   id                 BigInt              @id @default(autoincrement())
   name               String
   permissions        Int
-  projectId          Int                 @map("project_id")
+  projectId          BigInt              @map("project_id")
 
   project            Project             @relation(fields: [projectId], references: [id], onDelete: Cascade)
 
   projectMemberships ProjectMembership[]
+
+  @@index([projectId])
 }
 
 model Column {
-  id        Int     @id @default(autoincrement())
+  id        BigInt  @id @default(autoincrement())
   name      String
   position  Int
-  projectId Int     @map("project_id")
+  projectId BigInt  @map("project_id")
 
   project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
 
   tasks     Task[]
+
+  @@check(expression: sql`position >= 0`, name: "position_check")
+
+  @@index([projectId])
 }
 
 model Label {
-  id        Int        @id @default(autoincrement())
+  id        BigInt     @id @default(autoincrement())
   name      String
-  projectId Int        @map("project_id")
+  projectId BigInt     @map("project_id")
 
   project   Project    @relation(fields: [projectId], references: [id], onDelete: Cascade)
   labelings Labeling[]
+
+  @@index([projectId])
 }
 
 model Task {
-  id              Int              @id @default(autoincrement())
+  id              BigInt           @id @default(autoincrement())
   title           String
   description     String?
-  columnId        Int              @map("column_id")
-  creatorId       Int?             @map("creator_id")
+  columnId        BigInt           @map("column_id")
+  creatorId       BigInt?          @map("creator_id")
 
   column          Column           @relation(fields: [columnId], references: [id])
   creator         User             @relation(fields: [columnId], references: [id])
   comments        Comment[]
   taskAssignments TaskAssignment[]
   labelings       Labeling[]
+
+  @@index([columnId])
 }
 
 model Comment {
-  id        Int    @id @default(autoincrement())
+  id        BigInt  @id @default(autoincrement())
   content   String
-  taskId    Int    @map("task_id")
-  creatorId Int?   @map("creator_id")
+  taskId    BigInt  @map("task_id")
+  creatorId BigInt? @map("creator_id")
 
-  task      Task   @relation(fields: [taskId], references: [id], onDelete: Cascade)
-  creator   User?  @relation(fields: [creatorId], references: [id])
+  task      Task    @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  creator   User?   @relation(fields: [creatorId], references: [id])
+
+  @@index([taskId])
 }
 
 model InviteLink {
   code        String   @id @onCreate(uuid())
   createdAt   DateTime @default(now()) @map("created_at")
   isSingleUse Boolean  @map("is_single_use")
-  projectId   Int
+  projectId   BigInt
 
   project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
 }
 
 model PasswordResetLink {
   code      String   @id @onCreate(uuid())
-  createdAt DateTime @default(now()) @map("created_at")
-  userId    Int
+  createdAt DateTime @onCreate(now()) @map("created_at")
+  userId    BigInt
 
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model TaskAssignment {
-  taskId Int  @map("task_id")
-  userId Int  @map("user_id")
+  taskId BigInt @map("task_id")
+  userId BigInt @map("user_id")
 
-  task   Task @relation(fields: [taskId], references: [id], onDelete: Cascade)
-  user   User @relation(fields: [userId], references: [id])
+  task   Task   @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id])
 
   @@id([taskId, userId])
 }
 
 model ProjectMembership {
-  projectId Int     @map("project_id")
-  userId    Int     @map("user_id")
-  roleId    Int?    @map("role_id")
+  projectId BigInt  @map("project_id")
+  userId    BigInt  @map("user_id")
+  roleId    BigInt? @map("role_id")
 
   project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
   user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  role      Role?   @relation(fields: [roleId, projectId], references: [id, projectId], onDelete: SetNull)
+  role      Role?   @relation(fields: [roleId], references: [id], onDelete: SetNull)
 
   @@id([projectId, userId])
 }
 
 model Labeling {
-  taskId  Int   @map("task_id")
-  labelId Int   @map("label_id")
+  taskId  BigInt @map("task_id")
+  labelId BigInt @map("label_id")
 
-  task    Task  @relation(fields: [taskId], references: [id], onDelete: Cascade)
-  label   Label @relation(fields: [labelId], references: [id], onDelete: Cascade)
+  task    Task   @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  label   Label  @relation(fields: [labelId], references: [id], onDelete: Cascade)
 
   @@id([taskId, labelId])
 }
