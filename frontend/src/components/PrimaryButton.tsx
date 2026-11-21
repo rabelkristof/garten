@@ -1,7 +1,7 @@
-export default function PrimaryButton() {
+export default function PrimaryButton(props: { label: string }) {
   return (
-    <button className="rounded-[25px] bg-gradient-to-r from-primary to-secondary px-[40px] py-[10px] text-xl text-background">
-      Button
+    <button className="rounded-full bg-gradient-to-r from-primary to-secondary px-10 py-[0.6rem] text-xl text-background">
+      {props.label}
     </button>
   );
 }

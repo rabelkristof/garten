@@ -1,10 +1,9 @@
-import PrimaryButton from "../PrimaryButton.tsx";
-import SecondaryButton from "../SecondaryButton.tsx";
+import NavBar from "../NavBar.tsx";
 
 export default function Home() {
   return (
     <>
-      <PrimaryButton />
+      <NavBar />
     </>
   );
 }
