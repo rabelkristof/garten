@@ -28,6 +28,8 @@
 		"experimentalDecorators": true,
 		"declaration": true,
 
+		"skipLibCheck": true,
+
   "pretty": true,
   "resolveJsonModule": true,
   "types": [
