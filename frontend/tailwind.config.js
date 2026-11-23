@@ -10,6 +10,7 @@ export default {
       failure: "#e14242",
       heading: "#000000",
       muted: "#aaaaaa",
+      gray: "#eeeeee",
     },
     fontFamily: {
       sans: ["Lato", "sans-serif"],
