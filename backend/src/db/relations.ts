@@ -80,6 +80,10 @@ export const relations = defineRelations(
         from: r.tasks.id.through(r.assignments.taskId),
         to: r.users.id.through(r.assignments.userId),
       }),
+      labels: r.many.labels({
+        from: r.tasks.id.through(r.labelings.taskId),
+        to: r.labels.id.through(r.labelings.labelId),
+      }),
     },
     comments: {
       creator: r.one.users({

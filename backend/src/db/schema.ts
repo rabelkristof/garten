@@ -13,26 +13,32 @@ import {
   varchar,
 } from "drizzle-orm/pg-core";
 
+const citext = customType<{ data: string }>({
+  dataType() {
+    return "citext";
+  },
+});
+
 export const usersTable = snakeCase.table(
   "User",
   {
     id: bigint({ mode: "number" }).primaryKey().generatedAlwaysAsIdentity(),
-    username: varchar().notNull(),
-    email: varchar().notNull(),
+    username: citext().notNull(),
+    email: citext().notNull(),
     password: varchar().notNull(),
     profilePicture: varchar().notNull(),
   },
   (t) => [
-    uniqueIndex("idx_username").on(sql`lower(${t.username})`),
-    uniqueIndex("idx_email").on(sql`lower(${t.email})`),
-  ]
+    uniqueIndex("idx_username").on(t.username),
+    uniqueIndex("idx_email").on(t.email),
+  ],
 );
 
 export const projectsTable = snakeCase.table(
   "Project",
   {
     id: bigint({ mode: "number" }).primaryKey().generatedAlwaysAsIdentity(),
-    name: varchar().notNull(),
+    name: citext().notNull(),
     defaultPermissions: integer().notNull(),
 
     ownerId: bigint({ mode: "number" })
@@ -41,16 +47,14 @@ export const projectsTable = snakeCase.table(
   },
   // A user can't have two projects with the same name.
   // This also gives us an index on ownerId due to how postgres handles multicolumn indexes
-  (t) => [
-    uniqueIndex("idx_owner_project_name").on(t.ownerId, sql`lower(${t.name})`),
-  ]
+  (t) => [uniqueIndex("idx_owner_project_name").on(t.ownerId, t.name)],
 );
 
 export const rolesTable = snakeCase.table(
   "Role",
   {
     id: bigint({ mode: "number" }).primaryKey().generatedAlwaysAsIdentity(),
-    name: varchar().notNull(),
+    name: citext().notNull(),
     permissions: integer().notNull(),
 
     projectId: bigint({ mode: "number" })
@@ -58,16 +62,14 @@ export const rolesTable = snakeCase.table(
       .references(() => projectsTable.id, { onDelete: "cascade" }),
   },
   // A project can't have two roles with the same name.
-  (t) => [
-    uniqueIndex("idx_project_role_name").on(t.projectId, sql`lower(${t.name})`),
-  ]
+  (t) => [uniqueIndex("idx_project_role_name").on(t.projectId, t.name)],
 );
 
 export const columnsTable = snakeCase.table(
   "Column",
   {
     id: bigint({ mode: "number" }).primaryKey().generatedAlwaysAsIdentity(),
-    name: varchar().notNull(),
+    name: citext().notNull(),
     position: integer().notNull(),
 
     projectId: bigint({ mode: "number" })
@@ -77,30 +79,22 @@ export const columnsTable = snakeCase.table(
   (t) => [
     check("position_check", sql`position >= 0`),
     // A project can't have two columns with the same name.
-    uniqueIndex("idx_project_column_name").on(
-      t.projectId,
-      sql`lower(${t.name})`
-    ),
-  ]
+    uniqueIndex("idx_project_column_name").on(t.projectId, t.name),
+  ],
 );
 
 export const labelsTable = snakeCase.table(
   "Label",
   {
     id: bigint({ mode: "number" }).primaryKey().generatedAlwaysAsIdentity(),
-    name: varchar().notNull(),
+    name: citext().notNull(),
 
     projectId: bigint({ mode: "number" })
       .notNull()
       .references(() => projectsTable.id, { onDelete: "cascade" }),
   },
   // A project can't have two labels with the same name.
-  (t) => [
-    uniqueIndex("idx_project_label_name").on(
-      t.projectId,
-      sql`lower(${t.name})`
-    ),
-  ]
+  (t) => [uniqueIndex("idx_project_label_name").on(t.projectId, t.name)],
 );
 
 export const tasksTable = snakeCase.table(
@@ -120,7 +114,7 @@ export const tasksTable = snakeCase.table(
   },
   // No index on columnId, since the UNIQUE constraint on (column_id, position) already give us one.
   // The constraint is defined in drizzle/20261122205340_unique_positions/migration.sql
-  (t) => [check("position_check", sql`position >= 0`), index().on(t.creatorId)]
+  (t) => [check("position_check", sql`position >= 0`), index().on(t.creatorId)],
 );
 
 export const commentsTable = snakeCase.table(
@@ -139,7 +133,7 @@ export const commentsTable = snakeCase.table(
       onDelete: "set null",
     }),
   },
-  (t) => [index().on(t.taskId, t.createdAt), index().on(t.creatorId)]
+  (t) => [index().on(t.taskId, t.createdAt), index().on(t.creatorId)],
 );
 
 export const inviteLinkTable = snakeCase.table(
@@ -155,7 +149,7 @@ export const inviteLinkTable = snakeCase.table(
       .notNull()
       .references(() => projectsTable.id, { onDelete: "cascade" }),
   },
-  (t) => [index().on(t.projectId)]
+  (t) => [index().on(t.projectId)],
 );
 
 // Byte array type for simple hashes
@@ -182,7 +176,7 @@ export const passwordResetLinkTable = snakeCase.table(
   (t) => [
     check("PasswordResetLink_hash_length_check", sql`length(${t.hash}) = 64`),
     index().on(t.userId),
-  ]
+  ],
 );
 
 export const taskAssignmentsTable = snakeCase.table(
@@ -195,7 +189,7 @@ export const taskAssignmentsTable = snakeCase.table(
       .notNull()
       .references(() => usersTable.id, { onDelete: "cascade" }),
   },
-  (t) => [primaryKey({ columns: [t.taskId, t.userId] }), index().on(t.userId)]
+  (t) => [primaryKey({ columns: [t.taskId, t.userId] }), index().on(t.userId)],
 );
 
 export const projectMembershipsTable = snakeCase.table(
@@ -215,7 +209,7 @@ export const projectMembershipsTable = snakeCase.table(
     primaryKey({ columns: [t.projectId, t.userId] }),
     index().on(t.userId),
     index().on(t.roleId),
-  ]
+  ],
 );
 
 export const labelingsTable = snakeCase.table(
@@ -228,5 +222,8 @@ export const labelingsTable = snakeCase.table(
       .notNull()
       .references(() => labelsTable.id, { onDelete: "cascade" }),
   },
-  (t) => [primaryKey({ columns: [t.taskId, t.labelId] }), index().on(t.labelId)]
+  (t) => [
+    primaryKey({ columns: [t.taskId, t.labelId] }),
+    index().on(t.labelId),
+  ],
 );
