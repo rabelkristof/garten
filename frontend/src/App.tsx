@@ -1,7 +1,7 @@
-import Home from "./components/pages/Home.tsx";
+import Projects from "./components/pages/Projects.tsx";
 
 function App() {
-  return <Home />;
+  return <Projects />;
 }
 
 export default App;
