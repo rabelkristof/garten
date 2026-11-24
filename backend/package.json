@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "dev": "nodemon --exec npx tsx src/app/server.ts",
+    "seed": "tsc && node lib/db/seed.js",
     "lint": "oxlint"
   },
   "keywords": [],
@@ -14,7 +15,7 @@
   "dependencies": {
     "argon2": "^0.45.2",
     "dotenv": "^18.0.10",
-    "drizzle-orm": "^1.0.0-rc.6",
+    "drizzle-orm": "^1.0.0-rc.5-ab785fc",
     "express": "^5.3.0",
     "jsonwebtoken": "^9.0.3",
     "pg": "^8.23.1",
@@ -32,6 +33,7 @@
     "@types/node": "^26.6.6",
     "@types/pg": "^8.23.1",
     "drizzle-kit": "^1.0.0-rc.6",
+    "drizzle-seed": "^1.0.0-rc.5",
     "nodemon": "^3.1.11",
     "oxfmt": "^0.79.0",
     "oxlint": "^1.94.0",
