@@ -4,7 +4,7 @@ import PrimaryButton from "./PrimaryButton.tsx";
 
 export default function NavBar() {
   return (
-    <nav className="flex w-full px-4 py-3">
+    <nav className="flex w-full bg-background px-4 py-3">
       <div className="mr-auto">
         <ProfileButton />
       </div>
