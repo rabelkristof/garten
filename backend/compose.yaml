@@ -1,0 +1,19 @@
+services:
+  db:
+    image: garten/db
+    build:
+      context: .
+      dockerfile: db.Dockerfile
+    command: -c config_file=/etc/postgresql/postgresql.conf
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    networks:
+      - backend
+    volumes:
+      - data:/var/lib/postgresql
+volumes:
+  data:
+networks:
+  backend: {}
