@@ -1,7 +1,7 @@
-import Projects from "./components/pages/Projects.tsx";
+import LogIn from "./components/pages/LogIn.tsx";
 
 function App() {
-  return <Projects />;
+  return <LogIn />;
 }
 
 export default App;
