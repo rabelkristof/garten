@@ -1,7 +1,7 @@
-import LogIn from "./components/pages/LogIn.tsx";
+import Register from "./components/pages/Register";
 
 function App() {
-  return <LogIn />;
+  return <Register />;
 }
 
 export default App;
