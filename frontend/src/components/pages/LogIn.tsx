@@ -1,6 +1,7 @@
 import Heading from "../Heading.tsx";
 import TextInput from "../TextInput.tsx";
 import TextLabel from "../TextLabel.tsx";
+import PasswordInput from "../PasswordInput.tsx";
 import PrimaryButtonLarge from "../PrimaryButtonLarge.tsx";
 
 export default function LogIn() {
@@ -13,7 +14,7 @@ export default function LogIn() {
       </div>
       <div className="mx-auto mb-16 mt-16 text-center">
         <TextLabel text="Password" />
-        <TextInput placeholder="Enter your password" />
+        <PasswordInput placeholder="Enter your password" />
       </div>
       <div className="text-center">
         <PrimaryButtonLarge label="Log In" />
